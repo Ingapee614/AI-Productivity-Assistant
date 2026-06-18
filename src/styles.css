@@ -110,18 +110,33 @@
 }
 
 @layer utilities {
+  .bg-gradient-primary { background-image: var(--gradient-primary); }
+  .bg-gradient-cool { background-image: var(--gradient-cool); }
+  .bg-gradient-warm { background-image: var(--gradient-warm); }
+  .bg-gradient-mint { background-image: var(--gradient-mint); }
+  .bg-gradient-sun { background-image: var(--gradient-sun); }
+  .bg-mesh { background-image: var(--gradient-mesh); }
+  .text-gradient-primary {
+    background-image: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+
   .prose-custom h1 { font-size: 1.5rem; font-weight: 600; margin: 1rem 0 0.5rem; }
   .prose-custom h2 { font-size: 1.25rem; font-weight: 600; margin: 0.875rem 0 0.5rem; }
   .prose-custom h3 { font-size: 1.125rem; font-weight: 600; margin: 0.75rem 0 0.5rem; }
   .prose-custom p { margin: 0.5rem 0; line-height: 1.6; }
   .prose-custom ul, .prose-custom ol { margin: 0.5rem 0; padding-left: 1.25rem; }
   .prose-custom li { margin: 0.25rem 0; }
-  .prose-custom code { background: oklch(0.93 0.01 260); padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.875rem; }
-  .prose-custom pre { background: oklch(0.12 0.02 260); color: oklch(0.95 0 0); padding: 0.75rem; border-radius: 0.5rem; overflow-x: auto; margin: 0.5rem 0; }
+  .prose-custom code { background: oklch(0.93 0.02 300); padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.875rem; }
+  .prose-custom pre { background: oklch(0.18 0.06 285); color: oklch(0.97 0.01 300); padding: 0.75rem; border-radius: 0.5rem; overflow-x: auto; margin: 0.5rem 0; }
   .prose-custom pre code { background: transparent; padding: 0; color: inherit; }
   .prose-custom blockquote { border-left: 3px solid var(--color-border); padding-left: 0.75rem; margin: 0.5rem 0; color: var(--color-muted-foreground); }
   .prose-custom table { width: 100%; border-collapse: collapse; margin: 0.5rem 0; }
   .prose-custom th, .prose-custom td { border: 1px solid var(--color-border); padding: 0.375rem 0.5rem; text-align: left; }
   .prose-custom th { background: var(--color-muted); font-weight: 600; }
 }
+
 
