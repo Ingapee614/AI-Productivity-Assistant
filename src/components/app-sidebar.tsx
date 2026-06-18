@@ -6,7 +6,6 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -19,7 +18,7 @@ import {
   ListTodo,
   Search,
   LayoutDashboard,
-  Bot,
+  Sparkles,
 } from "lucide-react";
 
 const items = [
@@ -44,38 +43,59 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar collapsible="icon">
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className="flex items-center gap-2 px-3 py-4">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-primary text-white shadow-md">
-              <Bot className="h-4 w-4" />
-            </div>
-            {!collapsed && (
-              <span className="text-sm font-semibold tracking-tight text-sidebar-foreground">
+    <Sidebar collapsible="icon" className="border-r-0">
+      <SidebarContent className="gap-0">
+        {/* Prominent Logo Area */}
+        <div className="relative flex flex-col items-center px-3 pt-6 pb-5">
+          {/* Animated glow ring behind logo */}
+          <div className="logo-pulse absolute h-12 w-12 rounded-xl" />
+          <div className="relative z-10 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-primary text-white shadow-glow">
+            <Sparkles className="h-5 w-5" />
+          </div>
+          {!collapsed && (
+            <div className="mt-3 flex flex-col items-center text-center">
+              <span className="text-base font-bold tracking-tight text-sidebar-foreground">
                 AI Workplace
               </span>
-            )}
-          </SidebarGroupLabel>
+              <span className="mt-0.5 text-[10px] font-medium uppercase tracking-widest text-sidebar-foreground/50">
+                Productivity
+              </span>
+            </div>
+          )}
+          {/* Decorative line */}
+          {!collapsed && (
+            <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-sidebar-border to-transparent" />
+          )}
+        </div>
+
+        {/* Navigation */}
+        <SidebarGroup className="px-2">
           <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    asChild
-                    isActive={isActive(item.url)}
-                    tooltip={collapsed ? item.title : undefined}
-                  >
-                    <Link
-                      to={item.url}
-                      className="flex items-center gap-2"
+            <SidebarMenu className="gap-1">
+              {items.map((item) => {
+                const active = isActive(item.url);
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={active}
+                      tooltip={collapsed ? item.title : undefined}
+                      className={`
+                        sidebar-item-hover group relative h-10 rounded-lg
+                        ${active ? "sidebar-item-active" : "text-sidebar-foreground/70 hover:text-sidebar-foreground"}
+                      `}
                     >
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+                      <Link to={item.url} className="flex items-center gap-3 px-3">
+                        <item.icon className="h-[18px] w-[18px] shrink-0 transition-transform duration-200 group-hover:scale-110" />
+                        <span className="text-sm font-medium">{item.title}</span>
+                        {active && (
+                          <span className="absolute right-2 h-1.5 w-1.5 rounded-full bg-white/80" />
+                        )}
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
