@@ -48,9 +48,11 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="flex items-center gap-2 px-3 py-4">
-            <Bot className="h-5 w-5 text-primary" />
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-primary text-white shadow-md">
+              <Bot className="h-4 w-4" />
+            </div>
             {!collapsed && (
-              <span className="text-sm font-semibold tracking-tight">
+              <span className="text-sm font-semibold tracking-tight text-sidebar-foreground">
                 AI Workplace
               </span>
             )}
