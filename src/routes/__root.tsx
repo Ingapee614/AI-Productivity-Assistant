@@ -126,10 +126,14 @@ function RootComponent() {
         <div className="flex min-h-screen w-full">
           <AppSidebar />
           <div className="flex flex-1 flex-col">
-            <header className="flex h-14 items-center gap-2 border-b px-4">
+            <header className="flex h-14 items-center gap-3 border-b bg-card/70 px-4 backdrop-blur-md">
               <SidebarTrigger className="-ml-1" />
-              <div className="text-sm font-medium text-muted-foreground">
-                AI Workplace Productivity Assistant
+              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-primary text-white shadow-sm">
+                <span className="text-xs font-bold">AI</span>
+              </div>
+              <div className="text-sm font-semibold tracking-tight">
+                <span className="text-gradient-primary">AI Workplace</span>
+                <span className="text-muted-foreground"> · Productivity Assistant</span>
               </div>
             </header>
             <main className="flex-1 overflow-auto">
